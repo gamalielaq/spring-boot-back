@@ -13,14 +13,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table
+@Table(name = "clientes")
 public class Cliente implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String mombre;
+	private String nombre;
 	private String apellido;
 	private String email;
 	
@@ -36,12 +36,12 @@ public class Cliente implements Serializable {
 		this.id = id;
 	}
 
-	public String getMombre() {
-		return mombre;
+	public String getnombre() {
+		return nombre;
 	}
 
-	public void setMombre(String mombre) {
-		this.mombre = mombre;
+	public void setnombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getApellido() {

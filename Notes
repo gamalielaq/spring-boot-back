@@ -1,0 +1,7 @@
+
+
+Conceptos:
+
+CORS: => Significa intercambio de recurso de origin cruzado --> Permite a los navegadores enviar y reibir datos restringidos, desde un dominio a otro,
+es decir mencanismo de control http para acceder a ciertos recursos de cualquier servidor backed, un estandar de seguridad para compartir recursos entre diferentes
+dominios.
