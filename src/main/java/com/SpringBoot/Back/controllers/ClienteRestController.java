@@ -12,6 +12,9 @@ import com.SpringBoot.Back.models.services.IClienteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -51,6 +54,12 @@ public class ClienteRestController {
       response.put("message", null);
       return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
    };
+
+   @GetMapping("/clientes/page/{page}")
+   public Page<Cliente> index(@PathVariable Integer page) {
+      Pageable pageable = PageRequest.of(page, 4);  //4 registros por página
+      return this.clienteService.findAll(pageable);
+   }
 
    /*
     * ¿Porque se usa la interfaz ICLienteService y no ClienteServiceImpl?
