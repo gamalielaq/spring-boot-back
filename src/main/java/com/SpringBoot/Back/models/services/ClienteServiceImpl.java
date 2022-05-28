@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.SpringBoot.Back.models.dao.IClienteDao;
 import com.SpringBoot.Back.models.entity.Cliente;
+import com.SpringBoot.Back.models.entity.Region;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -46,6 +47,12 @@ public class ClienteServiceImpl implements IClienteService {
     @Transactional(readOnly = true)
     public Page<Cliente> findAll(Pageable pageable) {
         return this.clienteDao.findAll(pageable);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Region> findAllRegiones() {
+        return this.clienteDao.findAllRegiones();
     }
 
   

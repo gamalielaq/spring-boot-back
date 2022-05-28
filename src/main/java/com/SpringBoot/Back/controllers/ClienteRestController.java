@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import com.SpringBoot.Back.models.entity.Cliente;
+import com.SpringBoot.Back.models.entity.Region;
 import com.SpringBoot.Back.models.services.IClienteService;
 import com.SpringBoot.Back.models.services.IUploadService;
 
@@ -189,6 +190,7 @@ public class ClienteRestController {
          clienteActual.setApellido(cliente.getApellido());
          clienteActual.setNombre(cliente.getNombre());
          clienteActual.setEmail(cliente.getEmail());
+         clienteActual.setRegion(cliente.getRegion());
 
          clienteUpdate = this.clienteService.save(clienteActual);
       } catch (Exception e) {
@@ -269,5 +271,10 @@ public class ClienteRestController {
       HttpHeaders cabecera = new HttpHeaders();
       cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename()+"\""); // Cabecera para forzar la descarga
       return new ResponseEntity<Resource>(recurso, cabecera, HttpStatus.OK);
+   }
+
+   @GetMapping("/clientes/regiones")
+   public List<Region> listarRegiones() {
+         return this.clienteService.findAllRegiones();
    }
 }
