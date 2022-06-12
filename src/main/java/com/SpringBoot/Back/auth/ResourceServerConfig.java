@@ -13,12 +13,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .antMatchers(HttpMethod.GET, "/api/clientes", "/api/clientes/page/**", "/uploads/img/**").permitAll() // solo esta ruta no necesita token
-        .antMatchers(HttpMethod.GET, "/api/clientes/{id}").hasAnyRole("USER", "ADMIN") // Any: para agregar mas de un rol
-        .antMatchers(HttpMethod.POST, "/api/clientes/upload").hasAnyRole("USER", "ADMIN")
-        .antMatchers(HttpMethod.POST, "/api/clientes").hasRole("ADMIN")
-        .antMatchers("/api/clientes/**").hasRole("ADMIN") // No indicamos el metodo -> aplica para cualquier otro metodo
-        .anyRequest().authenticated(); //Cualquie peticion requiere autenticacion 
+                .antMatchers(HttpMethod.GET, "/api/clientes", "/api/clientes/page/**", "/uploads/img/**").permitAll()
+                .anyRequest().authenticated();
     }
-    
+
 }
